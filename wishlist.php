@@ -10,21 +10,32 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
                 crossorigin="anonymous"></script>
+        <!-- Loads a custom Google Font into the webpage -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+        <!-- CSS Styling -->
+        <link href="css/styles.css" rel="stylesheet">
     </head>
-    <body>
-        <h1>My Dream Recording Studio Wishlist</h1>
-        <!-- Links to the page where you can add to the wishlist -->
-        <a href="wishlist-details.php">Add to your wishlist</a>
-        <!-- Creates a table and styles with bootstrap -->
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th class="col-4">Product</th>
-                    <th>Brand</th>
-                    <th>Price $</th>
-                    <th>Category</th>
-                </tr>
-            </thead>
+    <body class="wishlist">
+    <main>
+        <div>
+            <h1>My Dream Recording Studio Wishlist</h1>
+            <div>
+                <!-- Links to the page where you can add to the wishlist -->
+                <a href="wishlist-details.php">Add To The Wishlist</a>
+                <a href="index.html">Head Home</a>
+            </div>
+            <!-- Creates a table and styles with bootstrap -->
+            <table class="table table-striped table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th class="col-4">Product</th>
+                        <th>Brand</th>
+                        <th>Price $</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
             <tbody>
             <!-- Begins the php portion of the table-->
                 <?php
@@ -56,6 +67,8 @@
                 $db = null;
                 ?>
             </tbody>
-        </table>
-    </body>
+            </table>
+        </div>
+    </main>
+</body>
 </html>

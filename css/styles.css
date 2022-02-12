@@ -1,0 +1,189 @@
+
+/*******************/
+/* General Styling */
+/*******************/
+
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+/**********************/
+/***** index.html *****/
+/**********************/
+
+/*****************/
+/* Index Styling */
+/*****************/
+
+.index > main{
+
+    font-family:  'Montserrat';
+    height: 969px;
+    width: auto;
+
+    background-image: url(../img/1.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.index > main > section{
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.index > main > section > div:nth-child(1){
+    padding: 35px;
+
+}
+
+.index > main > section > div:nth-child(2){
+    padding: 35px;
+}
+
+.index > main > section > div:nth-child(1) > a{
+    font-size: 50px;
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 80px;
+}
+.index > main > section > div:nth-child(2) > a{
+    font-size: 50px;
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 80px;
+}
+.index > main > section > div:nth-child(1) > a:hover{
+    color: burlywood;
+}
+.index > main > section > div:nth-child(2) > a:hover{
+    color: burlywood;
+}
+
+/************************/
+/***** wishlist.php *****/
+/************************/
+
+/********************/
+/* Wishlist Styling */
+/********************/
+
+.wishlist > main {
+    background-image: url(../img/2.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 1200px;
+    width: auto;
+}
+.wishlist > main > div {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.wishlist > main > div > div {
+    padding: 30px;
+}
+
+.wishlist > main > div > div > a {
+    font-size: 25px;
+    text-decoration: none;
+    color: white;
+    padding: 0px 100px 0px 100px;
+}
+
+.wishlist > main > div > div > a:hover{
+    color: burlywood;
+}
+
+.wishlist > main > div > h1 {
+    font-size: 80px;
+    color: white;
+}
+.wishlist > main > div > table {
+    width: 1300px;
+}
+
+/********************************/
+/***** wishlist-details.php *****/
+/********************************/
+
+/****************************/
+/* Wishlist-Details Styling */
+/****************************/
+
+.wishlist-details > main {
+    background-image: url(../img/3.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 969px;
+    max-width: none;
+}
+.wishlist-details > main > div{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+
+}
+.wishlist-details > main > div > h1{
+    color: white;
+}
+.wishlist-details > main > div > form{
+    color: white;
+}
+.wishlist-details > main > div > div{
+    padding-top: 25px;
+}
+.wishlist-details > main > div > div > a{
+    text-decoration: none;
+    color: white;
+    padding: 25px;
+    font-size: 25px;
+}
+.wishlist-details > main > div > div > a:hover{
+    color: burlywood;
+}
+
+/*****************************/
+/***** save-wishlist.php *****/
+/*****************************/
+
+/*************************/
+/* Save-Wishlist Styling */
+/*************************/
+
+.save-wishlist > main{
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/4.png);
+    background-position: center;
+    background-size: cover;
+    height: 969px;
+    width: auto;
+}
+.save-wishlist > main > a{
+    font-size: 50px;
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 80px;
+}
+.save-wishlist > main > a:hover{
+    color: burlywood;
+}

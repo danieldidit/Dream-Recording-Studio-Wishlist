@@ -14,13 +14,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
-        <!-- Custom CSS -->
+        <!-- CSS Styling -->
         <link href="css/styles.css" rel="stylesheet">
     </head>
-    <body>
-    <main class="container">
-        <h1>Dream Recording Studio Wishlist</h1>
-        <h5 class="alert alert-info"> Please complete all fields.</h5>
+    <body class="wishlist-details">
+    <main>
+        <div>
+        <h1>Add to Dream Recording Studio</h1>
+        <h5 class="alert alert-dark col-3"> Please complete all fields.</h5>
         <!-- The code that the user will use to enter their data. -->
         <form method="post" action="save-wishlist.php">
             <fieldset class="m-1">
@@ -66,6 +67,12 @@
             </fieldset>
             <button class="offset-1 btn-secondary">Save</button>
         </form>
+        <div>
+            <!-- Links to Wishlist and Home Page -->
+            <a href="wishlist.php">View Wishlist</a>
+            <a href="index.html">Head Home</a>
+        </div>
+        </div>
     </main>
     </body>
 </html>

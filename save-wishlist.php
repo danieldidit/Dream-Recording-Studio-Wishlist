@@ -3,8 +3,11 @@
     <head>
         <meta charset="UTF-8"/>
         <title>Saving Wishlist</title>
+        <!-- CSS Styling -->
+        <link href="css/styles.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="save-wishlist">
+        <main>
         <?php
         // capture form inputs from POST array and store each one in a variable
         $product = $_POST['product'];
@@ -74,9 +77,13 @@
             // disconnect
             $db = null;
 
-            //show a confirmation message
-            echo "Wishlist Saved";
         }
         ?>
+            <!-- Displays Message -->
+            <p>WishList Saved!</p>
+            <!-- Links to Wishlist and Home Page -->
+            <a href="wishlist.php">View Wishlist</a>
+            <a href="index.html">Head Home</a>
+        </main>
     </body>
 </html>
