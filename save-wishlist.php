@@ -83,7 +83,7 @@
             <p>WishList Saved!</p>
             <!-- Links to Wishlist and Home Page -->
             <a href="wishlist.php">View Wishlist</a>
-            <a href="index.html">Head Home</a>
+            <a href="index.php">Head Home</a>
         </main>
     </body>
 </html>

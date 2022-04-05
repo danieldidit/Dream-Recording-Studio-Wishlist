@@ -18,13 +18,16 @@
         <link href="css/styles.css" rel="stylesheet">
     </head>
     <body class="wishlist">
+    <?php
+    $title = 'wishlist';
+    require 'includes/header.php';
+    ?>
     <main>
         <div>
             <h1>My Dream Recording Studio Wishlist</h1>
             <div>
                 <!-- Links to the page where you can add to the wishlist -->
                 <a href="wishlist-details.php">Add To The Wishlist</a>
-                <a href="index.html">Head Home</a>
             </div>
             <!-- Creates a table and styles with bootstrap -->
             <table class="table table-striped table-hover table-dark">

@@ -18,6 +18,10 @@
         <link href="css/styles.css" rel="stylesheet">
     </head>
     <body class="wishlist-details">
+    <?php
+    $title = 'wishlist-details';
+    require 'includes/header.php';
+    ?>
     <main>
         <div>
         <h1>Add to Dream Recording Studio</h1>
@@ -70,7 +74,7 @@
         <div>
             <!-- Links to Wishlist and Home Page -->
             <a href="wishlist.php">View Wishlist</a>
-            <a href="index.html">Head Home</a>
+            <a href="index.php">Head Home</a>
         </div>
         </div>
     </main>
