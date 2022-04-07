@@ -1,82 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <title>Wishlist Details</title>
-        <!-- Loads Bootstrap into the php file -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-              crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                crossorigin="anonymous"></script>
-        <!-- Loads a custom Google Font into the webpage -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
-        <!-- CSS Styling -->
-        <link href="css/styles.css" rel="stylesheet">
-    </head>
-    <body class="wishlist-details">
-    <?php
-    $title = 'wishlist-details';
-    require 'includes/header.php';
-    ?>
-    <main>
-        <div>
+<!-- Sets the title as wishlist-details and calls in the header-->
+<?php
+$title = 'wishlist-details';
+require 'includes/header.php';
+
+// check for wishlistId in URL. If it's there, fetch selected product from db for display
+try {
+    
+    //assign all variables to null
+    $wishlistId = null;
+    $product = null;
+    $brand = null;
+    $price = null;
+    $categoryId = null;
+    $image = null;
+    
+    // If wishlistId is set
+    if (isset($_GET['wishlistId'])) {
+        // And if wishlistId is numeric
+        if (is_numeric($_GET['wishlistId'])) {
+            // Store wishlistId in its variable
+            $wishlistId = $_GET['wishlistId'];
+            
+            // Connects to the AWS database
+            require 'includes/db.php';
+            
+            // Fetch all from wishlist where the wishlist is equal to the id in the URL
+            $sql = "SELECT * FROM wishlist WHERE wishlistId = :wishlistId";
+            $cmd = $db->prepare($sql);
+            $cmd->bindParam(':wishlistId', $wishlistId, PDO::PARAM_INT);
+            $cmd->execute();
+            
+            // Use the PDO fetch command to fetch what is in that specific row and assign it to its variable
+            $wishlist = $cmd->fetch();
+            $product = $wishlist['product'];
+            $brand = $wishlist['brand'];
+            $price = $wishlist['price'];
+            $categoryId = $wishlist['categoryId'];
+            
+            // Disconnect from the database
+            $db = null;
+        }
+    }
+} // If an error is caught, redirect to the error page
+catch (Exception $error) {
+    // Redirect to the error page
+    header('location:error.php');
+}
+?>
+<main class="wishlist-details">
+    <div>
         <h1>Add to Dream Recording Studio</h1>
         <h5 class="alert alert-dark col-3"> Please complete all fields.</h5>
         <!-- The code that the user will use to enter their data. -->
         <form method="post" action="save-wishlist.php">
             <fieldset class="m-1">
                 <label for="product" class="col-1">Product: *</label>
-                <input name="product" id="product" required maxlength="75"/>
+                <!-- If there is no wishlistId the field will be empty. If there is a wishlistId
+                the field will be populated with the data corresponding to that specific ID-->
+                <input name="product" id="product" required maxlength="75" value="<?php echo $product ?>"/>
             </fieldset>
             <fieldset class="m-1">
                 <label for="brand" class="col-1">Brand: *</label>
-                <input name="brand" id="brand" required maxlength="75"/>
+                <input name="brand" id="brand" required maxlength="75" value="<?php echo $brand ?>"/>
             </fieldset>
             <fieldset class="m-1">
                 <label for="price" class="col-1">Price: $ *</label>
-                <input name="price" id="price" min ="0" max="1000000" required/>
+                <input name="price" id="price" min="0" max="1000000" required value="<?php echo $price ?>"/>
             </fieldset>
             <fieldset class="m-1">
                 <label for="categoryId" class="col-1">Category: *</label>
                 <select name="categoryId" id="categoryId">
                     <!-- PHP portion that displays the different categories in a dropdown menu -->
                     <?php
-
-                    // Connects to my AWS server
-                    $db = new PDO('mysql:host=172.31.22.43;dbname=Daniel200352106', 'Daniel200352106', 'sEmIhvPPaS');
+                    
+                    // Connects to the AWS database
+                    require 'includes/db.php';
                     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+                    
                     // Set up SQL query to fetch the categories from the categories table in the db
                     $sql = "SELECT * FROM categories";
                     $cmd = $db->prepare($sql);
-
+                    
                     // Executes the query and store the results in $categories
                     $cmd->execute();
                     $categories = $cmd->fetchAll();
-
+                    
                     // foreach loop that displays each different category
                     foreach ($categories as $category) {
-                        echo '<option value="' . $category['categoryId'] . '">' . $category['name'] . '</option>';
+                        // If categoryId is equal to the categoryId from the wishlistId being edited
+                        if ($category['categoryId'] == $categoryId) {
+                            // select this option
+                            echo '<option selected value="' . $category['categoryId'] . '">' . $category['name'] .
+                                '</option>';
+                            
+                        }
+                        // If not, select this option
+                        else {
+                            echo '<option value="' . $category['categoryId'] . '">' . $category['name'] . '</option>';
+                        }
                     }
-
+                    
                     // Disconnects from the AWS server
                     $db = null;
-
+                    
                     ?>
                 </select>
             </fieldset>
+            <!-- Hides the wishlistId on the page so that we can refer to it when editing products -->
+            <input name="wishlistId" id="wishlistId" value="<?php echo $wishlistId; ?>" type="hidden"/>
             <button class="offset-1 btn-secondary">Save</button>
         </form>
-        <div>
-            <!-- Links to Wishlist and Home Page -->
-            <a href="wishlist.php">View Wishlist</a>
-            <a href="index.php">Head Home</a>
-        </div>
-        </div>
-    </main>
-    </body>
+    </div>
+</main>
+</body>
 </html>

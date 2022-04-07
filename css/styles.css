@@ -2,9 +2,10 @@
 /* General Styling */
 /*******************/
 
-body{
+body {
     padding: 0px;
     margin: 0px;
+    font-family: 'Roboto', sans-serif;
 }
 
 .navbar-dark {
@@ -23,12 +24,10 @@ a {
 /***** index.php *****/
 /**********************/
 
-.index > main{
+.index {
 
-    font-family:  'Montserrat';
     height: 913px;
     width: auto;
-
     background-image: url(../img/1.jpg);
     background-position: center;
     background-size: cover;
@@ -37,7 +36,8 @@ a {
     align-items: center;
     flex-direction: column;
 }
-.index > main > section{
+
+.index > section {
     background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: start;
@@ -46,7 +46,7 @@ a {
     height: 100%;
 }
 
-.index > main > section > p{
+.index > section > p {
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 20px;
@@ -60,14 +60,15 @@ a {
 /***** wishlist.php *****/
 /************************/
 
-.wishlist > main {
+.wishlist {
     background-image: url(../img/2.jpg);
     background-position: center;
     background-size: cover;
     height: 1200px;
     width: auto;
 }
-.wishlist > main > div {
+
+.wishlist > div {
     background-color: rgba(0, 0, 0, 0.5);
     height: 100%;
     width: 100%;
@@ -75,63 +76,80 @@ a {
     align-items: center;
     flex-direction: column;
 }
-.wishlist > main > div > div {
+
+.wishlist > div > div {
     padding: 30px;
 }
 
-.wishlist > main > div > div > a {
+.wishlist > div > div > a {
     font-size: 25px;
     text-decoration: none;
     color: white;
     padding: 0px 100px 0px 100px;
 }
 
-.wishlist > main > div > div > a:hover{
+.wishlist > div > div > a:hover {
     color: burlywood;
 }
 
-.wishlist > main > div > h1 {
+.wishlist > div > h1 {
     font-size: 80px;
     color: white;
 }
-.wishlist > main > div > table {
+
+.wishlist > div > table {
     width: 1300px;
+}
+
+.wishlist > div > table > tbody > tr > td > a{
+    text-decoration: none;
+    color: white;
+}
+
+.wishlist > div > table > tbody > tr > td > a:hover{
+    color: burlywood;
 }
 
 /********************************/
 /***** wishlist-details.php *****/
 /********************************/
 
-.wishlist-details > main {
+.wishlist-details {
     background-image: url(../img/3.jpg);
     background-position: center;
     background-size: cover;
     height: 913px;
     max-width: none;
 }
-.wishlist-details > main > div{
+
+.wishlist-details > div {
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
     height: 100%;
     padding: 25px;
 
 }
-.wishlist-details > main > div > h1{
+
+.wishlist-details > div > h1 {
     color: white;
 }
-.wishlist-details > main > div > form{
+
+.wishlist-details > div > form {
     color: white;
 }
-.wishlist-details > main > div > div{
+
+.wishlist-details > div > div {
     padding-top: 25px;
 }
-.wishlist-details > main > div > div > a{
+
+.wishlist-details > div > div > a {
     text-decoration: none;
     color: white;
     padding: 25px;
     font-size: 25px;
 }
-.wishlist-details > main > div > div > a:hover{
+
+.wishlist-details > div > div > a:hover {
     color: burlywood;
 }
 
@@ -139,27 +157,17 @@ a {
 /***** save-wishlist.php *****/
 /*****************************/
 
-.save-wishlist > main{
+.save-wishlist {
     font-size: 100px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: end;
+    align-items: start;
     background-image: url(../img/4.png);
     background-position: center;
     background-size: cover;
-    height: 969px;
+    height: 913px;
     width: auto;
-}
-.save-wishlist > main > a{
-    font-size: 50px;
-    text-decoration: none;
-    color: white;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 80px;
-}
-.save-wishlist > main > a:hover {
-    color: burlywood;
+    padding: 50px;
 }
 
 /*************************/
@@ -171,7 +179,8 @@ a {
     height: 913px;
     width: auto;
     display: flex;
-     }
+}
+
 .four0four > div {
     background-color: rgba(0, 0, 0, 0.4);
     height: 913px;
