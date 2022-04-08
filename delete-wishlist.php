@@ -1,4 +1,6 @@
+<!-- Checks authorization, Sets the title as delete-wishlist and calls in the header-->
 <?php
+require 'includes/auth.php';
 $title = 'delete-wishlist';
 require 'includes/header.php';
 ?>
@@ -42,7 +44,6 @@ require 'includes/header.php';
         header('location:error.php');
     }
     ?>
-    <p></p>
 </main>
 </body>
 </html>

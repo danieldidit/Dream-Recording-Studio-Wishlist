@@ -1,5 +1,6 @@
+<!-- Sets the title as registering and calls in the header-->
 <?php
-$title = 'Registering';
+$title = 'registering';
 require 'includes/header.php';
 
 try {

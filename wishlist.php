@@ -7,18 +7,28 @@ require 'includes/header.php';
     <div>
         <h1>My Dream Recording Studio Wishlist</h1>
         <div>
-            <!-- Links to the page where you can add to the wishlist -->
-            <a href="wishlist-details.php">Add To The Wishlist</a>
+            <!-- If user is logged in, links to the page where you can add to the wishlist -->
+            <?php
+            if (!empty($_SESSION['username'])) {
+                echo '<a href="wishlist-details.php">Add To The Wishlist</a>';
+            }
+            ?>
         </div>
         <!-- Creates a table and styles with bootstrap -->
         <table class="table table-striped table-hover table-dark">
             <thead>
             <tr>
+                <th>Image</th>
                 <th class="col-4">Product</th>
                 <th>Brand</th>
                 <th>Price $</th>
                 <th>Category</th>
-                <th></th>
+                <!-- If the user is logged in, display the Actions column-->
+                <?php
+                if (!empty($_SESSION['username'])) {
+                    echo '<th>Actions</th>';
+                }
+                ?>
                 <th></th>
             </tr>
             </thead>
@@ -41,6 +51,14 @@ require 'includes/header.php';
                 // Loops through the data, new row for each line of data, new column for each value
                 foreach ($wishlist as $list) {
                     echo '<tr>
+                            <td>';
+                    // If there is a product image, display it in the wishlist
+                    if (!empty($list['image'])) {
+                        echo '<div><img src="img/' . $list['image'] . '" alt="Product Image" class="thumbnail" /></div>';
+                    }
+                    
+                    
+                    echo '</td>
                             <td>
                             <!-- Links the product to its wishlistId, so we can edit that specific product -->
                             <a href="wishlist-details.php?wishlistId=' . $list['wishlistId'] . '">
@@ -53,14 +71,15 @@ require 'includes/header.php';
                             <td>' . $list['price'] . '</td>
                             <!-- This column displays the category name-->
                             <td>' . $list['name'] . '</td>
-                            <!-- This column displays an edit button. -->
-                            <td>
-                                <a class="btn btn-dark"
+                            <!-- This column displays an edit button if the user is logged in -->
+                            <td>';
+                    if (!empty($_SESSION['username'])) {
+                        echo '<a class="btn btn-dark"
                                 href="wishlist-details.php?wishlistId=' . $list['wishlistId'] . '">
                                 Edit
                                 </a>
                             </td>
-                            <!-- This column displays the delete button-->
+                            <!-- This column displays the delete button if the user is logged in-->
                             <td>
                             <!-- When clicked, it calls the javascript confirmDelete() function -->
                                 <a class="btn btn-dark"
@@ -70,12 +89,11 @@ require 'includes/header.php';
                                 </a>
                             </td>
                           </tr>';
+                    }
                 }
-                
                 // Disconnects from the AWS server
                 $db = null;
-            }
-            catch (Exception $error) {
+            } catch (Exception $error) {
                 // an error happened so redirect to the error page
                 header('location:error.php');
             }

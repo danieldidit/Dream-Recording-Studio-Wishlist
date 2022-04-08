@@ -1,5 +1,6 @@
-<!-- Sets the title as wishlist-details and calls in the header-->
+<!-- Checks authorization, Sets the title as wishlist-details and calls in the header-->
 <?php
+require 'includes/auth.php';
 $title = 'wishlist-details';
 require 'includes/header.php';
 
@@ -36,6 +37,7 @@ try {
             $brand = $wishlist['brand'];
             $price = $wishlist['price'];
             $categoryId = $wishlist['categoryId'];
+            $image = $wishlist['image'];
             
             // Disconnect from the database
             $db = null;
@@ -52,7 +54,7 @@ catch (Exception $error) {
         <h1>Add to Dream Recording Studio</h1>
         <h5 class="alert alert-dark col-3"> Please complete all fields.</h5>
         <!-- The code that the user will use to enter their data. -->
-        <form method="post" action="save-wishlist.php">
+        <form method="post" action="save-wishlist.php" enctype="multipart/form-data">
             <fieldset class="m-1">
                 <label for="product" class="col-1">Product: *</label>
                 <!-- If there is no wishlistId the field will be empty. If there is a wishlistId
@@ -93,25 +95,35 @@ catch (Exception $error) {
                                 echo '<option selected value="' . $category['categoryId'] . '">' . $category['name'] .
                                     '</option>';
                                 
-                            } // If not, select this option
+                            }
+                            // If not, select this option
                             else {
                                 echo '<option value="' . $category['categoryId'] . '">' . $category['name'] . '</option>';
                             }
                         }
-                        
                         // Disconnects from the AWS server
                         $db = null;
-                    }
-                    catch (Exception $error) {
-                            // an error happened so redirect to the error page
-                            header('location:error.php');
+                    } catch (Exception $error) {
+                        // an error happened so redirect to the error page
+                        header('location:error.php');
                     }
                     
                     ?>
                 </select>
             </fieldset>
-            <!-- Hides the wishlistId on the page so that we can refer to it when editing products -->
+            <!-- This fieldset is used to upload images -->
+            <fieldset class="m-1">
+                <label for="image" class="col-1">Image:</label>
+                <input type="file" name="image" id="image" accept=".png,.jpg"/>
+            </fieldset>
+            <?php
+            if (!empty($image)) {
+                echo '<div><img src="img/' . $image . '" alt="Product Image" class="image-preview" /></div>';
+            }
+            ?>
+            <!-- Hides the wishlistId on the page so that we can refer to it when editing the wishlist -->
             <input name="wishlistId" id="wishlistId" value="<?php echo $wishlistId; ?>" type="hidden"/>
+            <input name="currentImage" id="currentImage" value="<?php echo $image; ?>" type="hidden"/>+
             <button class="save-wishlist-details btn-secondary">Save</button>
         </form>
     </div>

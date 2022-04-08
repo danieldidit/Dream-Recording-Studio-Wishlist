@@ -20,6 +20,15 @@ a {
     color: burlywood;
 }
 
+.thumbnail {
+    width: 100px;
+}
+
+.image-preview {
+    width: 300px;
+
+}
+
 /**********************/
 /***** index.php *****/
 /**********************/
@@ -64,7 +73,7 @@ a {
     background-image: url(../img/2.jpg);
     background-position: center;
     background-size: cover;
-    height: 1200px;
+    height: 100%;
     width: auto;
 }
 
@@ -216,6 +225,8 @@ a {
 /******** register.php ********/
 /******************************/
 
+/** Also shared by login.php**/
+
 .register {
     background-image: url(../img/register.jpg);
     height: 913px;
@@ -226,6 +237,21 @@ a {
     padding: 50px;
     background-color: rgba(0, 0, 0, 0.2);
     height: 913px;
+}
+
+.register > div > p {
+    margin-bottom: -5px;
+}
+
+.register > div > a {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.register > div > a:hover {
+    color: rgba(0, 0, 0, 0.7);
+
 }
 
 .offset-1 {

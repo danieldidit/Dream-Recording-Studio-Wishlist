@@ -10,7 +10,7 @@ require 'includes/header.php';
         <!-- Tells the user what the password requirements are -->
         <h6>Passwords must be a minimum of 8 characters,<br> and include 1 digit, 1 upper-case
             letter, and 1 lower-case letter.</h6>
-        <!-- From that gathers the users information for registration-->
+        <!-- From that gathers the user's information for registration-->
         <form method="post" action="save-registration.php">
             <fieldset class="m-1">
                 <label for="email" class="col-1">E-mail:</label>
