@@ -1,6 +1,6 @@
 // delete confirmation
 function confirmDelete() {
-    return confirm('Are you sure you want to delete this club?')
+    return confirm('Are you sure you want to delete this item?')
 }
 
 // toggle password input on register form

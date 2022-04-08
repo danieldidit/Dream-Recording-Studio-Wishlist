@@ -37,18 +37,25 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="wishlist.php">View WishList</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="wishlist-details.php">Add To WishList</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-auto">
-                <!-- PHP that detects if user is logged in. If they aren't display Register and Login,
-                If they are display their username and a logout button-->
                 <?php
                 // Access the current session
                 if (session_status() == PHP_SESSION_NONE) {
                     session_start();
                 }
+                
+                // If user is logged in, display the Add to wishlist option in the header
+                if (!empty($_SESSION['username'])) {
+                    echo '<li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="wishlist-details.php">Add To WishList</a>
+                          </li>';
+                }
+                ?>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <!-- PHP that detects if user is logged in. If they aren't display Register and Login,
+                If they are display their username and a logout button-->
+                <?php
+                
                 // Nav-bar if not logged in
                 if (empty($_SESSION['username'])) {
                     echo '<li class="nav-item">
@@ -57,8 +64,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="login.php">Login</a>
                     </li>';
-                }
-                // Nav-bar if logged in
+                } // Nav-bar if logged in
                 else {
                     echo '<li class="nav-item">
                         <a class="nav-link" href="#">' . $_SESSION['username'] . '</a>
