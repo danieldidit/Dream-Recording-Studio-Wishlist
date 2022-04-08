@@ -72,43 +72,47 @@ catch (Exception $error) {
                 <select name="categoryId" id="categoryId">
                     <!-- PHP portion that displays the different categories in a dropdown menu -->
                     <?php
-                    
-                    // Connects to the AWS database
-                    require 'includes/db.php';
-                    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    
-                    // Set up SQL query to fetch the categories from the categories table in the db
-                    $sql = "SELECT * FROM categories";
-                    $cmd = $db->prepare($sql);
-                    
-                    // Executes the query and store the results in $categories
-                    $cmd->execute();
-                    $categories = $cmd->fetchAll();
-                    
-                    // foreach loop that displays each different category
-                    foreach ($categories as $category) {
-                        // If categoryId is equal to the categoryId from the wishlistId being edited
-                        if ($category['categoryId'] == $categoryId) {
-                            // select this option
-                            echo '<option selected value="' . $category['categoryId'] . '">' . $category['name'] .
-                                '</option>';
-                            
+                    try {
+                        // Connects to the AWS database
+                        require 'includes/db.php';
+                        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                        
+                        // Set up SQL query to fetch the categories from the categories table in the db
+                        $sql = "SELECT * FROM categories";
+                        $cmd = $db->prepare($sql);
+                        
+                        // Executes the query and store the results in $categories
+                        $cmd->execute();
+                        $categories = $cmd->fetchAll();
+                        
+                        // foreach loop that displays each different category
+                        foreach ($categories as $category) {
+                            // If categoryId is equal to the categoryId from the wishlistId being edited
+                            if ($category['categoryId'] == $categoryId) {
+                                // select this option
+                                echo '<option selected value="' . $category['categoryId'] . '">' . $category['name'] .
+                                    '</option>';
+                                
+                            } // If not, select this option
+                            else {
+                                echo '<option value="' . $category['categoryId'] . '">' . $category['name'] . '</option>';
+                            }
                         }
-                        // If not, select this option
-                        else {
-                            echo '<option value="' . $category['categoryId'] . '">' . $category['name'] . '</option>';
-                        }
+                        
+                        // Disconnects from the AWS server
+                        $db = null;
                     }
-                    
-                    // Disconnects from the AWS server
-                    $db = null;
+                    catch (Exception $error) {
+                            // an error happened so redirect to the error page
+                            header('location:error.php');
+                    }
                     
                     ?>
                 </select>
             </fieldset>
             <!-- Hides the wishlistId on the page so that we can refer to it when editing products -->
             <input name="wishlistId" id="wishlistId" value="<?php echo $wishlistId; ?>" type="hidden"/>
-            <button class="offset-1 btn-secondary">Save</button>
+            <button class="save-wishlist-details btn-secondary">Save</button>
         </form>
     </div>
 </main>

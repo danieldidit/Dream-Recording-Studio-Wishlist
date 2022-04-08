@@ -110,6 +110,7 @@ a {
     color: burlywood;
 }
 
+
 /********************************/
 /***** wishlist-details.php *****/
 /********************************/
@@ -123,7 +124,7 @@ a {
 }
 
 .wishlist-details > div {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.2);
     width: 100%;
     height: 100%;
     padding: 25px;
@@ -153,6 +154,10 @@ a {
     color: burlywood;
 }
 
+.save-wishlist-details {
+    margin-left: 163px;
+}
+
 /*****************************/
 /***** save-wishlist.php *****/
 /*****************************/
@@ -174,6 +179,8 @@ a {
 /******** 404.php ********/
 /*************************/
 
+/**Also uses the same styling for the error page**/
+
 .four0four {
     background-image: url(../img/lost.jpg);
     height: 913px;
@@ -191,4 +198,36 @@ a {
     flex-direction: column;
     color: white;
     padding-top: 120px;
+}
+
+/*************************************/
+/******** delete-wishlist.php ********/
+/*************************************/
+
+.delete-wishlist {
+    background-image: url(../img/terminator.png);
+    padding: 50px;
+    height: 913px;
+    color: white;
+    font-size: 40px;
+}
+
+/******************************/
+/******** register.php ********/
+/******************************/
+
+.register {
+    background-image: url(../img/register.jpg);
+    height: 913px;
+
+}
+
+.register > div{
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 913px;
+}
+
+.offset-1 {
+    padding-left: 112px;
 }
