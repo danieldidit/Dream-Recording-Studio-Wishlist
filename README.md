@@ -5,6 +5,6 @@ from the list. If a user isn't registered or not logged in, they are only allowe
 
 Link below. 
 
-https://lamp.computerstudi.es/~Daniel200352106/comp1006-as2/MyDreamRecordingStudio/
+https://lamp.computerstudi.es/~Daniel200352106/comp1006-as2/MyDreamRecordingStudio/.index
 
 
