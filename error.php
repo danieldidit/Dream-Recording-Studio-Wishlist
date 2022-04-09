@@ -1,3 +1,4 @@
+<!-- Sets the title as error and calls in the header -->
 <?php
 $title = 'error';
 require 'includes/header.php';

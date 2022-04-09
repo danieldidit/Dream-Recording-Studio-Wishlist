@@ -123,7 +123,7 @@ catch (Exception $error) {
             ?>
             <!-- Hides the wishlistId on the page so that we can refer to it when editing the wishlist -->
             <input name="wishlistId" id="wishlistId" value="<?php echo $wishlistId; ?>" type="hidden"/>
-            <input name="currentImage" id="currentImage" value="<?php echo $image; ?>" type="hidden"/>+
+            <input name="currentImage" id="currentImage" value="<?php echo $image; ?>" type="hidden"/>
             <button class="save-wishlist-details btn-secondary">Save</button>
         </form>
     </div>

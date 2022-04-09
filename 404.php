@@ -1,5 +1,6 @@
+<!-- Sets the title as 404 and calls in the header -->
 <?php
-$title = 'We could not find that page';
+$title = '404';
 require 'includes/header.php';
 ?>
 

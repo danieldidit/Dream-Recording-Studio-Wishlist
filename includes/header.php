@@ -35,6 +35,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <!-- View wishlist is seen whether user is logged in or not -->
                     <a class="nav-link" aria-current="page" href="wishlist.php">View WishList</a>
                 </li>
                 <?php

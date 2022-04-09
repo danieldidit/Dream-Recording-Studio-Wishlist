@@ -24,14 +24,12 @@ try {
         echo '<p class="alert-warning">Password is required</p>';
         $ok = false;
     }
-    
     if ($password != $confirm) {
         echo '<p class="alert-warning"> Passwords do not match.</p>';
         $ok = false;
     }
     
     if ($ok) {
-        
         // connect
         require 'includes/db.php';
         

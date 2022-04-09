@@ -36,6 +36,5 @@ require 'includes/header.php';
         <a href="register.php">Register</a>
     </div>
 </main>
-
 </body>
 </html>

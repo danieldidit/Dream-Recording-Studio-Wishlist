@@ -109,7 +109,7 @@ require 'includes/header.php';
                 $cmd->bindParam(':wishlistId', $wishlistId, PDO::PARAM_INT);
             }
             
-            // execute the command to save the movie permanently to our db table
+            // execute the command to save the item permanently to our db table
             $cmd->execute();
             
             // disconnect

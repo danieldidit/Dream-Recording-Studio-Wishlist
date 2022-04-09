@@ -68,7 +68,7 @@ require 'includes/header.php';
                             <!-- This column displays the brand-->
                             <td>' . $list['brand'] . '</td>
                             <!-- This column displays the price-->
-                            <td>' . $list['price'] . '</td>
+                            <td>$' . $list['price'] . '</td>
                             <!-- This column displays the category name-->
                             <td>' . $list['name'] . '</td>
                             <!-- This column displays an edit button if the user is logged in -->
@@ -93,7 +93,8 @@ require 'includes/header.php';
                 }
                 // Disconnects from the AWS server
                 $db = null;
-            } catch (Exception $error) {
+            }
+            catch (Exception $error) {
                 // an error happened so redirect to the error page
                 header('location:error.php');
             }
